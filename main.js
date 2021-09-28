@@ -77,12 +77,12 @@ class BasicWorldDemo {
 
     const loader = new THREE.CubeTextureLoader();
     const texture = loader.load([
-        './resources/posx.jpg',
-        './resources/negx.jpg',
-        './resources/posy.jpg',
-        './resources/negy.jpg',
-        './resources/posz.jpg',
-        './resources/negz.jpg',
+        './skybox/posx.png',
+        './skybox/negx.png',
+        './skybox/posy.png',
+        './skybox/negy.png',
+        './skybox/posz.png',
+        './skybox/negz.png',
     ]);
     this._scene.background = texture;
 
@@ -132,3 +132,12 @@ let _APP = null;
 window.addEventListener('DOMContentLoaded', () => {
   _APP = new BasicWorldDemo();
 });
+
+/*
+'./resources/posx.jpg',
+        './resources/negx.jpg',
+        './resources/posy.jpg',
+        './resources/negy.jpg',
+        './resources/posz.jpg',
+        './resources/negz.jpg',
+*/
