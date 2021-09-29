@@ -6,6 +6,11 @@ Esta batalla tiene como localización las afueras de la atmósfera de Tatooine c
 
 ![Escena del proyecto](escena.png)
 
+### Integrantes del equipo
+
+- César Arturo Martínez Valenzuela A00517067
+- Alex Jesús Vargas Castro A00824525
+
 
 ### Recursos:
 
