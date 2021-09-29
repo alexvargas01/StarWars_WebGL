@@ -2,7 +2,8 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.118/build/three.mod
 
 import {OrbitControls} from 'https://cdn.jsdelivr.net/npm/three@0.118/examples/jsm/controls/OrbitControls.js';
 
-const _VS = `
+// Vertex Shader
+const VS = `
 
 varying vec3 v_Normal;
 
@@ -12,7 +13,8 @@ void main() {
 }
 `;
 
-const _FS = `
+// Fragment Shader
+const FS = `
 
 varying vec3 v_Normal;
 
@@ -21,26 +23,35 @@ void main() {
 }
 `;
 
-class BasicWorldDemo {
+/*
+
+INICIO DE LA CLASE
+
+*/
+
+// Clase que contiene el constructor y funciones para crear la escena
+class StarWarsWebGL {
+
   constructor() {
-    this._Initialize();
+    this.Initialize();
   }
 
-  _Initialize() {
+  // Función para iniciar el proyecto
+  Initialize() {
     // Inicializar el Renderer de WebGL
-    this._threejs = new THREE.WebGLRenderer({
+    this.renderer = new THREE.WebGLRenderer({
       antialias: true,
     });
     // Iniciar parámetros para el renderer
-    this._threejs.shadowMap.enabled = true;
-    this._threejs.shadowMap.type = THREE.PCFSoftShadowMap;
-    this._threejs.setPixelRatio(window.devicePixelRatio);
-    this._threejs.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.shadowMap.enabled = true;
+    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    this.renderer.setPixelRatio(window.devicePixelRatio);
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
 
-    document.body.appendChild(this._threejs.domElement);
+    document.body.appendChild(this.renderer.domElement);
 
     window.addEventListener('resize', () => {
-      this._OnWindowResize();
+      this.OnWindowResize();
     }, false);
 
     // Creación de la cámara
@@ -48,13 +59,13 @@ class BasicWorldDemo {
     const aspect = 1920 / 1080;
     const near = 1.0;
     const far = 1000.0;
-    this._camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    this._camera.position.set(75, 20, 0);
+    this.camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+    this.camera.position.set(75, 20, 0);
 
     // Crear la escena para los objetos
-    this._scene = new THREE.Scene();
+    this.scene = new THREE.Scene();
 
-    // Crear la luz y luz ambiental
+    // Crear la luz direccional y ambiental
     let light = new THREE.DirectionalLight(0xFFFFFF, 1.0);
     light.position.set(20, 100, 10);
     light.target.position.set(0, 0, 0);
@@ -70,13 +81,14 @@ class BasicWorldDemo {
     light.shadow.camera.right = -100;
     light.shadow.camera.top = 100;
     light.shadow.camera.bottom = -100;
-    this._scene.add(light);
+    this.scene.add(light);
 
     // Añadir la luz a la escena
     light = new THREE.AmbientLight(0x101010);
-    this._scene.add(light);
+    this.scene.add(light);
 
-    const controls = new OrbitControls(this._camera, this._threejs.domElement);
+    // Añadir los controles para la orbita de la escena
+    const controls = new OrbitControls(this.camera, this.renderer.domElement);
     controls.target.set(0, 5, 0);
     controls.update();
 
@@ -90,7 +102,8 @@ class BasicWorldDemo {
         './skybox/posz.png',
         './skybox/negz.png',
     ]);
-    this._scene.background = texture;
+    // Asignar la textura como el fondo
+    this.scene.background = texture;
 
     // Crear un plano
     const plane = new THREE.Mesh(
@@ -101,46 +114,52 @@ class BasicWorldDemo {
     plane.castShadow = false;
     plane.receiveShadow = true;
     plane.rotation.x = -Math.PI / 2;
-    // Agregar el plano a la esfera
-    this._scene.add(plane);
+    // Agregar el plano a la escena
+    this.scene.add(plane);
 
     // Crear la esfera
     const s1 = new THREE.Mesh(
       new THREE.SphereGeometry(2,32,32),
       new THREE.ShaderMaterial({
         uniforms: {},
-        vertexShader: _VS,
-        fragmentShader: _FS,
+        vertexShader: VS,
+        fragmentShader: FS,
       })
     )
     s1.position.set(0,5,0);
     s1.castShadow = true;
     // Agregar la esfera a la escena
-    this._scene.add(s1);
-    this._sphere = s1;
+    this.scene.add(s1);
 
-    this._RAF();
+    this.RAF();
   }
 
-  _OnWindowResize() {
-    this._camera.aspect = window.innerWidth / window.innerHeight;
-    this._camera.updateProjectionMatrix();
-    this._threejs.setSize(window.innerWidth, window.innerHeight);
+  // Función para cambiar el tamaño de la ventana
+  OnWindowResize() {
+    this.camera.aspect = window.innerWidth / window.innerHeight;
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
   }
 
   // Request Animation Frame
   // Ejecutar esta funcion por cada frame de la pantalla
-  _RAF() {
+  RAF() {
     requestAnimationFrame(() => {
-      this._threejs.render(this._scene, this._camera);
-      this._RAF();
+      this.renderer.render(this.scene, this.camera);
+      this.RAF();
     });
   }
 }
 
+/*
 
-let _APP = null;
+FIN DE LA CLASE
 
+*/
+
+let APP = null;
+
+// Iniciar la escena en cuanto cargue la página
 window.addEventListener('DOMContentLoaded', () => {
-  _APP = new BasicWorldDemo();
+  APP = new StarWarsWebGL();
 });
