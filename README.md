@@ -9,4 +9,8 @@ Esta batalla tiene como localización las afueras de la atmósfera de Tatooine c
 
 ### Recursos:
 
-- Fondo: "Spacebox Collection free 3D model" de https://www.cgtrader.com
+- Imágenes del Skybox generadas via: 
+    
+    http://wwwtyro.github.io/space-3d/#animationSpeed=2.049970070436972&fov=83.47092732446109&nebulae=false&pointStars=true&resolution=2048&seed=411fg89l5jm0&stars=true&sun=false
+
+    A procedural 3D generator of space scenes using WebGL created by wwwtyro: https://github.com/wwwtyro & tomahim: https://github.com/tomahim
