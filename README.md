@@ -21,3 +21,4 @@ Esta batalla tiene como localización las afueras de la atmósfera de Tatooine c
     A procedural 3D generator of space scenes using WebGL created by wwwtyro: https://github.com/wwwtyro & tomahim: https://github.com/tomahim
 
 - [Modelo del Imperial Star Destroyer](https://sketchfab.com/3d-models/star-wars-imperial-ii-star-destroyer-b8bd2d35f7604670ab85242c06c6d280)
+- [Modelo del planeta Tatooine](https://sketchfab.com/3d-models/tatooine-b871789cd77a4e2ab9a9a06de41b67ea)
