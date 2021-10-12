@@ -1,0 +1,11 @@
+Model Information:
+* title:	Star Wars X-Wing Fighter
+* source:	https://sketchfab.com/3d-models/star-wars-x-wing-fighter-703493e197e445ec9bce1ae00eb7c13c
+* author:	DANIEL WEINLEIN (https://sketchfab.com/danielweinlein)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Star Wars X-Wing Fighter" (https://sketchfab.com/3d-models/star-wars-x-wing-fighter-703493e197e445ec9bce1ae00eb7c13c) by DANIEL WEINLEIN (https://sketchfab.com/danielweinlein) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
