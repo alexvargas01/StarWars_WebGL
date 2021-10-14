@@ -12,7 +12,7 @@ const sizes = {
 };
 const fov = 80;
 const near = 0.1;
-const far = 50000;
+const far = 100000000;
 const camera = new THREE.PerspectiveCamera(
   fov,
   sizes.width / sizes.height,
@@ -88,10 +88,40 @@ planet.load(
   }
 );
 
+const sun1 = new GLTFLoader();
+sun1.load(
+	"./assets/sun/scene.gltf",
+  function (gltf) {
+    const zelda = gltf.scene.children[0];
+    zelda.scale.set(30000, 30000, 30000);
+	zelda.position.set(-5000000,800000,-300000)
+    scene.add(gltf.scene);
+  },
+  undefined,
+  function (error) {
+    console.error(error);
+  }
+);
+
+const sun2 = new GLTFLoader();
+sun2.load(
+	"./assets/sun/scene.gltf",
+  function (gltf) {
+    const zelda = gltf.scene.children[0];
+    zelda.scale.set(50000, 50000, 50000);
+	zelda.position.set(-10000000,200000,900000)
+    scene.add(gltf.scene);
+  },
+  undefined,
+  function (error) {
+    console.error(error);
+  }
+);
+
 // <----- LUZ DIRECCIONAL ----->
 // TODO: Agregar tres fuentes de luz: los dos soles de Tatooine, y la luz que rebota del planeta
 const colorDeLuz = 0xffffff;
-const intensidadDeLuz = 1;
+const intensidadDeLuz = 2;
 const directionalLight = new THREE.DirectionalLight(
   colorDeLuz,
   intensidadDeLuz
