@@ -12,7 +12,7 @@ const sizes = {
 };
 const fov = 80;
 const near = 0.1;
-const far = 5000;
+const far = 50000;
 const camera = new THREE.PerspectiveCamera(
   fov,
   sizes.width / sizes.height,
@@ -65,6 +65,21 @@ loader3.load(
     const zelda = gltf.scene.children[0];
     zelda.scale.set(.00032, .00032, .00032);
 	zelda.position.set(0,0,500)
+    scene.add(gltf.scene);
+  },
+  undefined,
+  function (error) {
+    console.error(error);
+  }
+);
+
+const planet = new GLTFLoader();
+planet.load(
+	"./assets/mars/scene.gltf",
+  function (gltf) {
+    const zelda = gltf.scene.children[0];
+    zelda.scale.set(8000, 8000, 8000);
+	zelda.position.set(10000,-19000,0)
     scene.add(gltf.scene);
   },
   undefined,
