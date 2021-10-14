@@ -28,95 +28,75 @@ document.body.appendChild(renderer.domElement);
 
 // <----- LOADER PARA EL MODELO ----->
 // TODO: Agregar más naves imperiales y rebeldes
-const loader = new GLTFLoader();
-loader.load(
-  "./assets/star_wars_imperial_ii_star_destroyer/scene.gltf",
-  function (gltf) {
-    const zelda = gltf.scene.children[0];
-    zelda.scale.set(0.3, 0.3, 0.3);
-	zelda.position.set(150,0,0)
-    scene.add(gltf.scene);
-  },
-  undefined,
-  function (error) {
-    console.error(error);
-  }
-);
+//Loader function
+function loadModel(url) {
+  return new Promise((resolve) => {
+    new GLTFLoader().load(url, resolve);
+  });
+}
 
-const loader2 = new GLTFLoader();
-loader2.load(
-  "./assets/star_wars_imperial_ii_star_destroyer/scene.gltf",
-  function (gltf) {
-    const zelda = gltf.scene.children[0];
-    zelda.scale.set(0.3, 0.3, 0.3);
-	zelda.position.set(-150,0,0)
-    scene.add(gltf.scene);
-  },
-  undefined,
-  function (error) {
-    console.error(error);
-  }
-);
+//Declare all models
+let model1, model2, model3, model4, model5, model6;
 
-const loader3 = new GLTFLoader();
-loader3.load(
-	"./assets/resistance_fleet__resistance_navy/scene.gltf",
-  function (gltf) {
-    const zelda = gltf.scene.children[0];
-    zelda.scale.set(.00032, .00032, .00032);
-	zelda.position.set(0,0,500)
-    scene.add(gltf.scene);
-  },
-  undefined,
-  function (error) {
-    console.error(error);
-  }
-);
+let p1 = loadModel(
+  "./assets/star_wars_imperial_ii_star_destroyer/scene.gltf"
+).then((result) => {
+  model1 = result.scene.children[0];
+});
 
-const planet = new GLTFLoader();
-planet.load(
-	"./assets/mars/scene.gltf",
-  function (gltf) {
-    const zelda = gltf.scene.children[0];
-    zelda.scale.set(8000, 8000, 8000);
-	zelda.position.set(10000,-19000,0)
-    scene.add(gltf.scene);
-  },
-  undefined,
-  function (error) {
-    console.error(error);
-  }
-);
+let p2 = loadModel(
+  "./assets/star_wars_imperial_ii_star_destroyer/scene.gltf"
+).then((result) => {
+  model2 = result.scene.children[0];
+});
 
-const sun1 = new GLTFLoader();
-sun1.load(
-	"./assets/sun/scene.gltf",
-  function (gltf) {
-    const zelda = gltf.scene.children[0];
-    zelda.scale.set(30000, 30000, 30000);
-	zelda.position.set(-5000000,800000,-300000)
-    scene.add(gltf.scene);
-  },
-  undefined,
-  function (error) {
-    console.error(error);
-  }
-);
+let p3 = loadModel(
+  "./assets/resistance_fleet__resistance_navy/scene.gltf"
+).then((result) => {
+  model3 = result.scene.children[0];
+});
 
-const sun2 = new GLTFLoader();
-sun2.load(
-	"./assets/sun/scene.gltf",
-  function (gltf) {
-    const zelda = gltf.scene.children[0];
-    zelda.scale.set(50000, 50000, 50000);
-	zelda.position.set(-10000000,200000,900000)
-    scene.add(gltf.scene);
-  },
-  undefined,
-  function (error) {
-    console.error(error);
-  }
-);
+let p4 = loadModel("./assets/mars/scene.gltf").then((result) => {
+  model4 = result.scene.children[0];
+});
+
+let p5 = loadModel("./assets/sun/scene.gltf").then((result) => {
+  model5 = result.scene.children[0];
+});
+
+let p6 = loadModel("./assets/sun/scene.gltf").then((result) => {
+  model6 = result.scene.children[0];
+});
+
+//if all Promises resolved
+Promise.all([p1, p2, p3, p4, p6, p6]).then(() => {
+  //do something to the model
+  model1.position.set(150, 0, 0);
+  model1.scale.set(0.3, 0.3, 0.3);
+
+  model2.position.set(-150, 0, 0);
+  model2.scale.set(0.3, 0.3, 0.3);
+
+  model3.position.set(0, 0, 500);
+  model3.scale.set(0.00032, 0.00032, 0.00032);
+
+  model4.position.set(10000, -19000, 0);
+  model4.scale.set(8000, 8000, 8000);
+
+  model5.position.set(-5000000, 800000, -300000);
+  model5.scale.set(30000, 30000, 30000);
+
+  model6.position.set(-10000000, 200000, 900000);
+  model6.scale.set(50000, 50000, 50000);
+
+  //add model to the scene
+  scene.add(model1);
+  scene.add(model2);
+  scene.add(model3);
+  scene.add(model4);
+  scene.add(model5);
+  scene.add(model6);
+});
 
 // <----- LUZ DIRECCIONAL ----->
 // TODO: Agregar tres fuentes de luz: los dos soles de Tatooine, y la luz que rebota del planeta
