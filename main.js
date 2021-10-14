@@ -72,7 +72,7 @@ let p6 = loadModel('./assets/mars/scene.gltf').then(result => {tatooine = result
 let p7 = loadModel('./assets/sun/scene.gltf').then(result => {sun1 = result.scene.children[0]; });
 let p8 = loadModel('./assets/sun/scene.gltf').then(result => {sun2 = result.scene.children[0]; });
 
-Promise.all([p1, p2, p3, p4, p5,p6, p7, p8]).then( () => {
+Promise.all([p1, p2, p3, p4, p5, p6, p7, p8]).then( () => {
 
 	// Posición de los modelos
 	star_destroyer1.position.set(150, 0, 0);
