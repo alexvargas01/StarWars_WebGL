@@ -68,7 +68,7 @@ let p2 = loadModel('./assets/resistance_fleet__resistance_navy/scene.gltf').then
 let p3 = loadModel('./assets/tie_fighter/scene.gltf').then(result => {tie_fighter = result.scene.children[0]; });
 let p4 = loadModel('./assets/x-wing_fighter/scene.gltf').then( result => {x_wing = result.scene.children[0]; });
 let p5 = loadModel('./assets/star_wars_imperial_ii_star_destroyer/scene.gltf').then(result => {star_destroyer2 = result.scene.children[0]; });
-let p6 = loadModel('./assets/mars/scene.gltf').then(result => {tatooine = result.scene.children[0]; });
+let p6 = loadModel('./assets/tatooine/scene.gltf').then(result => {tatooine = result.scene.children[0]; });
 let p7 = loadModel('./assets/sun/scene.gltf').then(result => {sun1 = result.scene.children[0]; });
 let p8 = loadModel('./assets/sun/scene.gltf').then(result => {sun2 = result.scene.children[0]; });
 
@@ -78,25 +78,25 @@ Promise.all([p1, p2, p3, p4, p5, p6, p7, p8]).then( () => {
 	star_destroyer1.position.set(150, 0, 0);
 	star_destroyer2.position.set(-150, 0, 0);
 	rebel_fleet.position.set(0, 0, 500);
-	tatooine.position.set(10000, -19000, 0);
-	sun1.position.set(-5000000, 800000, -300000);
-	sun2.position.set(-10000000, 200000, 900000);
+	tatooine.position.set(9000, -2000, 0);
+	sun1.position.set(10000, 20000, -100000);
+	sun2.position.set(35000, 20000, -110000);
 
 	// Tamaño de los modelos
 	star_destroyer1.scale.set(0.3, 0.3, 0.3);
 	star_destroyer2.scale.set(0.3, 0.3, 0.3);
 	rebel_fleet.scale.set(.00032, .00032, .00032);
-	tatooine.scale.set(8000, 8000, 8000);
-	sun1.scale.set(50000, 50000, 50000);
-	sun2.scale.set(50000, 50000, 50000);
+	tatooine.scale.set(7000, 7000, 7000);
+	sun1.scale.set(900, 900, 900);
+	sun2.scale.set(700, 700, 700);
 
 	// Rotación inicial de los modelos
 	
 
 	// Agregar los modelos a la escena
 	scene.add(star_destroyer1);
-	scene.add(star_destroyer2);
-	scene.add(rebel_fleet);
+	// scene.add(star_destroyer2);
+	// scene.add(rebel_fleet);
 	scene.add(tatooine);
 	scene.add(sun1);
 	scene.add(sun2);
