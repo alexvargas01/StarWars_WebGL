@@ -26,19 +26,29 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(sizes.width, sizes.height);
 document.body.appendChild(renderer.domElement);
 
+// <----- LUZ AMBIENTAL ----->
+const ambientLight = new THREE.AmbientLight( 0x404040 ); // soft white light
+scene.add( ambientLight );
+
 // <----- LUZ DIRECCIONAL ----->
-// TODO: Agregar tres fuentes de luz: los dos soles de Tatooine, y la luz que rebota del planeta
-const colorDeLuz = 0xffffff;
-const intensidadDeLuz = 3;
-const directionalLight = new THREE.DirectionalLight(
+const colorDeLuz = 0xffccaa;
+const intensidadDeLuz = 5;
+const directionalLight1 = new THREE.DirectionalLight(
   colorDeLuz,
   intensidadDeLuz
-); // Luz direccional blanca a toda intensidad brillando desde arriba
-scene.add(directionalLight);
+);
+const directionalLight2 = new THREE.DirectionalLight(
+  colorDeLuz,
+  intensidadDeLuz
+);
+directionalLight1.position.set(10000, 20000, -100000)
+directionalLight2.position.set(35000, 20000, -110000)
+scene.add(directionalLight1);
+scene.add(directionalLight2);
 
 // <----- CONTROLES ORBITALES ----->
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.target.set(0, 5, 0); // El objetivo en el que estará dando vueltas. Toma como parámetro un Vector3
+controls.target.set(0, 0, 0); // El objetivo en el que estará dando vueltas. Toma como parámetro un Vector3
 controls.update(); // Actualiza los controles para que tengan las modificaciones que se le hacen
 
 // <----- FONDO ----->
