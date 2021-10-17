@@ -10,7 +10,7 @@ const sizes = {
   width: window.innerWidth,
   height: window.innerHeight,
 };
-const fov = 80;
+const fov = 90;
 const near = 0.1;
 const far = 100000000;
 const camera = new THREE.PerspectiveCamera(
@@ -19,7 +19,7 @@ const camera = new THREE.PerspectiveCamera(
   near,
   far
 );
-camera.position.set(500, 400, 600);
+camera.position.set(-500, 300, 600);
 
 // <----- CREACIÓN DEL RENDERER ----->
 const renderer = new THREE.WebGLRenderer();
@@ -29,7 +29,7 @@ document.body.appendChild(renderer.domElement);
 // <----- LUZ DIRECCIONAL ----->
 // TODO: Agregar tres fuentes de luz: los dos soles de Tatooine, y la luz que rebota del planeta
 const colorDeLuz = 0xffffff;
-const intensidadDeLuz = 2;
+const intensidadDeLuz = 3;
 const directionalLight = new THREE.DirectionalLight(
   colorDeLuz,
   intensidadDeLuz
@@ -75,7 +75,7 @@ let p8 = loadModel('./assets/sun/scene.gltf').then(result => {sun2 = result.scen
 Promise.all([p1, p2, p3, p4, p5, p6, p7, p8]).then( () => {
 
 	// Posición de los modelos
-	star_destroyer1.position.set(150, 0, 0);
+	star_destroyer1.position.set(0, 0, 0);
 	star_destroyer2.position.set(-150, 0, 0);
 	rebel_fleet.position.set(0, 0, 500);
 	tatooine.position.set(9000, -2000, 0);
