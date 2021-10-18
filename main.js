@@ -22,7 +22,7 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(-500, 300, 600);
 
 // <----- CREACIÓN DEL RENDERER ----->
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({antialias: true});
 renderer.setSize(sizes.width, sizes.height);
 document.body.appendChild(renderer.domElement);
 
