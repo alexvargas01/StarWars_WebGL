@@ -1,0 +1,22 @@
+{
+  "name": "StarWars_WebGL",
+  "version": "1.0.0",
+  "description": "Recreación de una batalla espacial con un Star Destroyer en el centro y X-Wings atacando mientras dan vueltas alrededor de la nave.",
+  "main": "main.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexvargas01/StarWars_WebGL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexvargas01/StarWars_WebGL/issues"
+  },
+  "homepage": "https://github.com/alexvargas01/StarWars_WebGL#readme"
+}
