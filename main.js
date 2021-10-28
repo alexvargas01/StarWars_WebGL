@@ -1,5 +1,5 @@
 import * as THREE from "./three.js-master/build/three.module.js";
-import TWEEN from 'https://cdn.jsdelivr.net/npm/@tweenjs/tween.js@18.5.0/dist/tween.esm.js';
+import TWEEN from "https://cdn.jsdelivr.net/npm/@tweenjs/tween.js@18.5.0/dist/tween.esm.js";
 import { GLTFLoader } from "./three.js-master/examples/jsm/loaders/GLTFLoader.js";
 import { OrbitControls } from "./three.js-master/examples/jsm/controls/OrbitControls.js";
 
@@ -132,23 +132,42 @@ Promise.all([p1, p2, p3, p4, p5, p6, p7, p8]).then(() => {
   tie_fighter.scale.set(1, 1, 1);
 
   //Rotación inicial de los modelos
-  const coords = { x: 0, y: 0, z: 0 };
-  const tween1 = new TWEEN.Tween(coords)
-    .to({ x: 100, y: 100, z: 100 })
-    .repeat(10)
-    .start();
+  const tween1 = new TWEEN.Tween({ x: 0, y: 0, z: 0 })
+    .to({ x: 100, y: 100, z: 100 }, 3000)
+    .easing(TWEEN.Easing.Bounce.InOut);
+  const tween2 = new TWEEN.Tween({ x: 100, y: 100, z: 100 })
+    .to({ x: 0, y: 0, z: 0 }, 3000)
+    .easing(TWEEN.Easing.Bounce.InOut);
+
+    tween1.chain(tween2);
+    tween2.chain(tween1);
+
 
   tween1.onUpdate(function (
     obj = {
       x,
       y,
-      z,t
+      z,
+
     },
     elapsed
   ) {
     tie_fighter.position.set(obj.x, obj.y, obj.z);
   });
 
+  tween2.onUpdate(function (
+    obj = {
+      x,
+      y,
+      z,
+
+    },
+    elapsed
+  ) {
+    tie_fighter.position.set(obj.x, obj.y, obj.z);
+  });
+  
+  tween1.start();
   // Agregar los modelos a la escena
   scene.add(star_destroyer1);
   // scene.add(star_destroyer2);
