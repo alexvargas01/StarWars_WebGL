@@ -20,7 +20,7 @@ const camera = new THREE.PerspectiveCamera(
   near,
   far
 );
-camera.position.set(-500, 300, 600);
+camera.position.set(-700, 300, 600);
 
 // <----- CREACIÓN DEL RENDERER ----->
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -123,22 +123,24 @@ let p10 = loadModel("./assets/tie_fighter/scene.gltf").then((result) => {
 Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]).then(() => {
   // Posición de los modelos
   star_destroyer1.position.set(0, 0, 0);
-  star_destroyer2.position.set(-150, 0, 0);
-  rebel_fleet.position.set(0, 0, 500);
+  star_destroyer2.position.set(-500, 0, 0);
+  rebel_fleet.position.set(-250, 0, 700);
   tatooine.position.set(9000, -2000, 0);
   sun1.position.set(10000, 20000, -100000);
   sun2.position.set(35000, 20000, -110000);
 
   // Tamaño de los modelos
   star_destroyer1.scale.set(0.5, 0.5, 0.5);
-  star_destroyer2.scale.set(0.3, 0.3, 0.3);
+  star_destroyer2.scale.set(0.5, 0.5, 0.5);
   rebel_fleet.scale.set(0.00032, 0.00032, 0.00032);
   tatooine.scale.set(7000, 7000, 7000);
   sun1.scale.set(900, 900, 900);
   sun2.scale.set(700, 700, 700);
-  tie_fighter.scale.set(1, 1, 1);
-  tie_fighter2.scale.set(1, 1, 1);
-  tie_fighter3.scale.set(1, 1, 1);
+  tie_fighter.scale.set(2, 2, 2);
+  tie_fighter2.scale.set(2, 2, 2);
+  tie_fighter3.scale.set(2, 2, 2);
+
+  rebel_fleet.rotation.setFromVector3(new THREE.Vector3( -Math.PI / 2,0, Math.PI / 2));
 
   //MOVIMIENTO FIGHTER
   const start = { x: -150, y: 100, z: -150 };
@@ -331,8 +333,8 @@ Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]).then(() => {
 
   // Agregar los modelos a la escena
   scene.add(star_destroyer1);
-  // scene.add(star_destroyer2);
-  // scene.add(rebel_fleet);
+  scene.add(star_destroyer2);
+  scene.add(rebel_fleet);
   scene.add(tatooine);
   scene.add(sun1);
   scene.add(sun2);
