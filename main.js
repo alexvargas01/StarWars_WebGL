@@ -79,6 +79,8 @@ let rebel_fleet,
   tie_fighter2,
   tie_fighter3,
   x_wing,
+  x_wing2,
+  x_wing3,
   tatooine,
   sun1,
   sun2;
@@ -119,8 +121,14 @@ let p9 = loadModel("./assets/tie_fighter/scene.gltf").then((result) => {
 let p10 = loadModel("./assets/tie_fighter/scene.gltf").then((result) => {
   tie_fighter3 = result.scene.children[0];
 });
+let p11 = loadModel("./assets/x-wing_fighter/scene.gltf").then((result) => {
+  x_wing2 = result.scene.children[0];
+});
+let p12 = loadModel("./assets/x-wing_fighter/scene.gltf").then((result) => {
+  x_wing3 = result.scene.children[0];
+});
 
-Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]).then(() => {
+Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12]).then(() => {
   // Posición de los modelos
   star_destroyer1.position.set(0, 0, 0);
   star_destroyer2.position.set(-500, 0, 0);
@@ -139,10 +147,15 @@ Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]).then(() => {
   tie_fighter.scale.set(2, 2, 2);
   tie_fighter2.scale.set(2, 2, 2);
   tie_fighter3.scale.set(2, 2, 2);
+  x_wing.scale.set(0.08, 0.08, 0.08);
+  x_wing2.scale.set(0.08, 0.08, 0.08);
+  x_wing3.scale.set(0.08, 0.08, 0.08);
 
-  rebel_fleet.rotation.setFromVector3(new THREE.Vector3( -Math.PI / 2,0, Math.PI / 2));
+  rebel_fleet.rotation.setFromVector3(
+    new THREE.Vector3(-Math.PI / 2, 0, Math.PI / 2)
+  );
 
-  //MOVIMIENTO FIGHTER
+  //START POS FIGHTER
   const start = { x: -150, y: 100, z: -150 };
   const moveto1 = { x: -150, y: 100, z: 150 };
   const moveto2 = { x: -350, y: 100, z: 150 };
@@ -161,6 +174,7 @@ Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]).then(() => {
   const moveto11 = { x: -350, y: 200, z: -150 };
   const moveto12 = { x: -150, y: 200, z: -150 };
 
+  //START ROT FIGHTER
   const rotStart = { rotY: 0 };
   const rotto1 = { rotY: -Math.PI / 2 };
   const rotto2 = { rotY: -Math.PI };
@@ -179,6 +193,45 @@ Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]).then(() => {
   const rotto11 = { rotY: -Math.PI * (3 / 2) };
   const rotto12 = { rotY: -Math.PI * 2 };
 
+  //START POS XWING
+  const s = { x: -150, y: 100, z: -150 };
+  const m1 = { x: -150, y: 100, z: 150 };
+  const m2 = { x: -350, y: 100, z: 150 };
+  const m3 = { x: -350, y: 100, z: -150 };
+  const m4 = { x: -150, y: 100, z: -150 };
+
+  const s2 = { x: -150, y: 150, z: -150 };
+  const m5 = { x: -150, y: 150, z: 150 };
+  const m6 = { x: -350, y: 150, z: 150 };
+  const m7 = { x: -350, y: 150, z: -150 };
+  const m8 = { x: -150, y: 150, z: -150 };
+
+  const s3 = { x: -150, y: 200, z: -150 };
+  const m9 = { x: -150, y: 200, z: 150 };
+  const m10 = { x: -350, y: 200, z: 150 };
+  const m11 = { x: -350, y: 200, z: -150 };
+  const m12 = { x: -150, y: 200, z: -150 };
+
+  //START ROT XWING
+  const rotSt = { rotY: 0 };
+  const rot1 = { rotY: -Math.PI / 2 };
+  const rot2 = { rotY: -Math.PI };
+  const rot3 = { rotY: -Math.PI * (3 / 2) };
+  const rot4 = { rotY: -Math.PI * 2 };
+
+  const rotSt2 = { rotY: 0 };
+  const rot5 = { rotY: -Math.PI / 2 };
+  const rot6 = { rotY: -Math.PI };
+  const rot7 = { rotY: -Math.PI * (3 / 2) };
+  const rot8 = { rotY: -Math.PI * 2 };
+
+  const rotSt3 = { rotY: 0 };
+  const rot9 = { rotY: -Math.PI / 2 };
+  const rot10 = { rotY: -Math.PI };
+  const rot11 = { rotY: -Math.PI * (3 / 2) };
+  const rot12 = { rotY: -Math.PI * 2 };
+
+  //TWEEN MOV FIGHTER
   var tweenRot1 = new TWEEN.Tween(rotStart).to(rotto1, 400);
   var tweenRot2 = new TWEEN.Tween(rotStart).to(rotto2, 400);
   var tweenRot3 = new TWEEN.Tween(rotStart).to(rotto3, 400);
@@ -209,6 +262,38 @@ Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]).then(() => {
   var tweenMove11 = new TWEEN.Tween(start3).to(moveto11, 2200);
   var tweenMove12 = new TWEEN.Tween(start3).to(moveto12, 2200);
 
+  //TWEEN MOV XWING
+  var Rot1 = new TWEEN.Tween(rotSt).to(rot1, 400);
+  var Rot2 = new TWEEN.Tween(rotSt).to(rot2, 400);
+  var Rot3 = new TWEEN.Tween(rotSt).to(rot3, 400);
+  var Rot4 = new TWEEN.Tween(rotSt).to(rot4, 400);
+
+  var Rot5 = new TWEEN.Tween(rotSt2).to(rot5, 400);
+  var Rot6 = new TWEEN.Tween(rotSt2).to(rot6, 400);
+  var Rot7 = new TWEEN.Tween(rotSt2).to(rot7, 400);
+  var Rot8 = new TWEEN.Tween(rotSt2).to(rot8, 400);
+
+  var Rot9 = new TWEEN.Tween(rotSt3).to(rot9, 400);
+  var Rot10 = new TWEEN.Tween(rotSt3).to(rot10, 400);
+  var Rot11 = new TWEEN.Tween(rotSt3).to(rot11, 400);
+  var Rot12 = new TWEEN.Tween(rotSt3).to(rot12, 400);
+
+  var Move1 = new TWEEN.Tween(s).to(m1, 2000);
+  var Move2 = new TWEEN.Tween(s).to(m2, 2000);
+  var Move3 = new TWEEN.Tween(s).to(m3, 2000);
+  var Move4 = new TWEEN.Tween(s).to(m4, 2000);
+
+  var Move5 = new TWEEN.Tween(s2).to(m5, 1800);
+  var Move6 = new TWEEN.Tween(s2).to(m6, 1800);
+  var Move7 = new TWEEN.Tween(s2).to(m7, 1800);
+  var Move8 = new TWEEN.Tween(s2).to(m8, 1800);
+
+  var Move9 = new TWEEN.Tween(s3).to(m9, 2200);
+  var Move10 = new TWEEN.Tween(s3).to(m10, 2200);
+  var Move11 = new TWEEN.Tween(s3).to(m11, 2200);
+  var Move12 = new TWEEN.Tween(s3).to(m12, 2200);
+
+  //CHAIN TWEENS FIGHTER
   tweenMove1.chain(tweenRot1);
   tweenRot1.chain(tweenMove2);
   tweenMove2.chain(tweenRot2);
@@ -217,8 +302,6 @@ Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]).then(() => {
   tweenRot3.chain(tweenMove4);
   tweenMove4.chain(tweenRot4);
   tweenRot4.chain(tweenMove1);
-
-
 
   tweenMove5.chain(tweenRot5);
   tweenRot5.chain(tweenMove6);
@@ -229,8 +312,6 @@ Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]).then(() => {
   tweenMove8.chain(tweenRot8);
   tweenRot8.chain(tweenMove5);
 
-
-
   tweenMove9.chain(tweenRot9);
   tweenRot9.chain(tweenMove10);
   tweenMove10.chain(tweenRot10);
@@ -240,6 +321,35 @@ Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]).then(() => {
   tweenMove12.chain(tweenRot12);
   tweenRot12.chain(tweenMove9);
 
+  //CHAIN TWEENS XWING
+  Move1.chain(Rot1);
+  Rot1.chain(Move2);
+  Move2.chain(Rot2);
+  Rot2.chain(Move3);
+  Move3.chain(Rot3);
+  Rot3.chain(Move4);
+  Move4.chain(Rot4);
+  Rot4.chain(Move1);
+
+  Move5.chain(Rot5);
+  Rot5.chain(Move6);
+  Move6.chain(Rot6);
+  Rot6.chain(Move7);
+  Move7.chain(Rot7);
+  Rot7.chain(Move8);
+  Move8.chain(Rot8);
+  Rot8.chain(Move5);
+
+  Move9.chain(Rot9);
+  Rot9.chain(Move10);
+  Move10.chain(Rot10);
+  Rot10.chain(Move11);
+  Move11.chain(Rot11);
+  Rot11.chain(Move12);
+  Move12.chain(Rot12);
+  Rot12.chain(Move9);
+
+  //UPDATE FIGHTER POSITION
   const updatePos = function (
     object = {
       x,
@@ -251,7 +361,6 @@ Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]).then(() => {
     tie_fighter.position.x = object.x;
     tie_fighter.position.y = object.y;
     tie_fighter.position.z = object.z;
-
   };
 
   const updatePos2 = function (
@@ -265,9 +374,7 @@ Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]).then(() => {
     tie_fighter2.position.x = object.x;
     tie_fighter2.position.y = object.y;
     tie_fighter2.position.z = object.z;
-
   };
-
 
   const updatePos3 = function (
     object = {
@@ -282,7 +389,47 @@ Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]).then(() => {
     tie_fighter3.position.z = object.z;
   };
 
+  //UPDATE XWING POSITION
+  const upPos = function (
+    object = {
+      x,
+      y,
+      z,
+    },
+    elapsed
+  ) {
+    x_wing.position.x = object.x;
+    x_wing.position.y = object.y;
+    x_wing.position.z = object.z;
+  };
 
+  const upPos2 = function (
+    object = {
+      x,
+      y,
+      z,
+    },
+    elapsed
+  ) {
+    x_wing2.position.x = object.x;
+    x_wing2.position.y = object.y;
+    x_wing2.position.z = object.z;
+  };
+
+  const upPos3 = function (
+    object = {
+      x,
+      y,
+      z,
+    },
+    elapsed
+  ) {
+    x_wing3.position.x = object.x;
+    x_wing3.position.y = object.y;
+    x_wing3.position.z = object.z;
+  };
+
+  //CALL UPDATE FIGHTER
   tweenMove1.onUpdate(updatePos);
   tweenMove2.onUpdate(updatePos);
   tweenMove3.onUpdate(updatePos);
@@ -298,6 +445,23 @@ Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]).then(() => {
   tweenMove11.onUpdate(updatePos3);
   tweenMove12.onUpdate(updatePos3);
 
+  //CALL UPDATE XWING
+  Move1.onUpdate(upPos);
+  Move2.onUpdate(upPos);
+  Move3.onUpdate(upPos);
+  Move4.onUpdate(upPos);
+
+  Move5.onUpdate(upPos2);
+  Move6.onUpdate(upPos2);
+  Move7.onUpdate(upPos2);
+  Move8.onUpdate(upPos2);
+
+  Move9.onUpdate(upPos3);
+  Move10.onUpdate(upPos3);
+  Move11.onUpdate(upPos3);
+  Move12.onUpdate(upPos3);
+
+  //UPDATE ROTATION FIGHTER
   const updateRot = function (
     object = {
       rotY,
@@ -309,6 +473,19 @@ Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]).then(() => {
     tie_fighter3.rotation.y = object.rotY;
   };
 
+  //UPDATE ROTATION XWING
+  const upRot = function (
+    object = {
+      rotY,
+    },
+    elapsed
+  ) {
+    x_wing.rotation.y = object.rotY;
+    x_wing2.rotation.y = object.rotY;
+    x_wing3.rotation.y = object.rotY;
+  };
+
+  //CALL UPDATE ROTATION FIGHTER
   tweenRot1.onUpdate(updateRot);
   tweenRot2.onUpdate(updateRot);
   tweenRot3.onUpdate(updateRot);
@@ -324,12 +501,35 @@ Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]).then(() => {
   tweenRot11.onUpdate(updateRot);
   tweenRot12.onUpdate(updateRot);
 
+  //CALL UPDATE ROTATION XWING
+  Rot1.onUpdate(upRot);
+  Rot2.onUpdate(upRot);
+  Rot3.onUpdate(upRot);
+  Rot4.onUpdate(upRot);
+
+  Rot5.onUpdate(upRot);
+  Rot6.onUpdate(upRot);
+  Rot7.onUpdate(upRot);
+  Rot8.onUpdate(upRot);
+
+  Rot9.onUpdate(upRot);
+  Rot10.onUpdate(upRot);
+  Rot11.onUpdate(upRot);
+  Rot12.onUpdate(upRot);
+
+  //START FIGHTER TWEENS
   tweenMove1.start();
 
   tweenMove5.start();
 
   tweenMove9.start();
-  
+
+  //START XWING TWEENS
+  Move1.start();
+
+  Move5.start();
+
+  Move9.start();
 
   // Agregar los modelos a la escena
   scene.add(star_destroyer1);
@@ -341,6 +541,9 @@ Promise.all([p1, p2, p3, p4, p5, p6, p7, p8, p9, p10]).then(() => {
   scene.add(tie_fighter);
   scene.add(tie_fighter2);
   scene.add(tie_fighter3);
+  scene.add(x_wing);
+  scene.add(x_wing2);
+  scene.add(x_wing3);
 
   console.log("Entered promise");
   animate();
