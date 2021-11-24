@@ -552,8 +552,8 @@ Promise.all([p1, p2, p3, p4, p6, p7, p8, p9, p10, p11, p12]).then(() => {
   scene.add(x_wing3);
 
   // Visualizador de los ejes (SOLO PARA DEV) Rojo -> X; Verde -> Y; Azul -> Z
-  var axesHelper = new THREE.AxesHelper( 10000 );
-  scene.add( axesHelper );
+  // var axesHelper = new THREE.AxesHelper( 10000 );
+  // scene.add( axesHelper );
 
 
   animate();
