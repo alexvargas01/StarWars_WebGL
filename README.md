@@ -22,3 +22,7 @@ Esta batalla tiene como localización las afueras de la atmósfera de Tatooine c
 
 - [Modelo del Imperial Star Destroyer](https://sketchfab.com/3d-models/star-wars-imperial-ii-star-destroyer-b8bd2d35f7604670ab85242c06c6d280)
 - [Modelo del planeta Tatooine](https://sketchfab.com/3d-models/tatooine-b871789cd77a4e2ab9a9a06de41b67ea)
+- [Modelo del X-WING](https://sketchfab.com/3d-models/star-wars-x-wing-fighter-703493e197e445ec9bce1ae00eb7c13c)
+- [Model del TIE fighter](https://sketchfab.com/3d-models/3d-tie-fighter-star-wars-model-5375de94c2484ab0b2a2bd75aa63c2b4)
+- [Modelo del sol](https://sketchfab.com/3d-models/sun-9ef1c68fbb944147bcfcc891d3912645#download)
+- [Modelo de la flota rebelde](https://sketchfab.com/3d-models/resistance-fleet-resistance-navy-e931fe8cff1540f7bbd3b191c5e8eb27)
